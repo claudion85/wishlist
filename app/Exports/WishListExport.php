@@ -12,7 +12,8 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class WishListExport implements FromCollection,WithHeadings
 {
-    protected $delimiter = ';';
+    /*set the semicolon delimiter */
+    protected $delimiter = ';'; 
     
     /**
     * @return \Illuminate\Support\Collection
@@ -23,26 +24,29 @@ class WishListExport implements FromCollection,WithHeadings
         
         $wishlist=WishList::all();
         $exportCsvCollection;
+
+        /* foreach wishlist retreive the basic informations to build the csv file */
+        /* create a new model with this informations and store the object in an array*/
+        
         foreach ($wishlist as $wish){
             $exportModel=new ExportCsvModel();
             $user=User::find($wish->user_id);
             $exportModel->user=$user->name;
             $exportModel->title_wishlist=$wish->wishlist_name;
             
+            /* for count the number of products decode the item json in wishlist and count the length*/
             $arr=json_decode($wish->items);
             $exportModel->number_of_items=count($arr);
             $exportCsvCollection[]=collect($exportModel);
-            /*$wish->user=$user->name;
-            $exportCsv=collect($user->name);
-            $wish->title_wishlits=$wish->wishlist_name;
-            $arr=json_decode($wish->items);
-            $wish->number_of_items=count($arr);
-            //$response[]=collect($temp);*/
+            
         }
        
+        /*return a collection response */
         return collect($exportCsvCollection);
     }
 
+
+    /* this function add the headings in csv file */
     public function headings(): array
     {
         return [

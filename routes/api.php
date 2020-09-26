@@ -13,6 +13,7 @@ use Api\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 /* login and register routes */
 Route::post('/register','API\AuthController@register');
 Route::post('/login','API\AuthController@login');
