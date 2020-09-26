@@ -4,7 +4,7 @@
 
 Clone the repository
 
-    https://github.com/claudion85/wishlist.git
+    git clone https://github.com/claudion85/wishlist.git
 
 Switch to the repo folder
 
@@ -35,6 +35,13 @@ Edit .env file and set db connection like this
     DB_USERNAME=dbuser
     DB_PASSWORD=654321
 
+Set the right permissions to storage and bootstrap folders
+
+    chown -R $USER:www-data storage
+    chown -R $USER:www-data bootstrap/cache
+    chmod -R 775 storage
+    chmod -R 775 bootstrap/cache
+
 Migrate files
 
     php artisan migrate
@@ -43,12 +50,6 @@ Install Laravel Passport
 
     php artisan passport:install
 
-Set the right permissions to storage and bootstrap folders
-
-    chown -R $USER:www-data storage
-    chown -R $USER:www-data bootstrap/cache
-    chmod -R 775 storage
-    chmod -R 775 bootstrap/cache
 
 Generate new key
 
