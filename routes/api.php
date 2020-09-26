@@ -13,17 +13,21 @@ use Api\AuthController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+/* login and register routes */
 Route::post('/register','API\AuthController@register');
 Route::post('/login','API\AuthController@login');
 
+
+/* Authenticated routes */
 Route::group(['prefix' => '/',  'middleware' => 'auth:api'], function()
 {
-    //All the routes that belongs to the group goes here
+    /*product's routes*/
     Route::get('products', 'ProductController@index' );
 
+    /* declare the resource route for CRUD operations in WishListController*/
     Route::resource('wishlist',WishListController::class);
-    Route::get('export_wishlist','WishListController@exportCsv');
-    Route::get('test','API\TestController@index');
+
+    
+    /* logout route */
     Route::post('logout','API\AuthController@logout');
 });
