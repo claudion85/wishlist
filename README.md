@@ -54,7 +54,7 @@ Generate new key
 
     php artisan key:generate
 
-Seed database with 50 products
+Seed database with 50 fake products for test
 
     php artisan db:seed --class="ProductSeeder"
 
@@ -100,3 +100,93 @@ Set the Authentication with:
     name
     email
     password
+
+    Response:
+    [
+    {
+        "id": 1,
+        "product_name": "saepe",
+        "product_price": 0,
+        "created_at": "2020-09-26T14:31:11.000000Z",
+        "updated_at": "2020-09-26T14:31:11.000000Z"
+    },
+    {
+        "id": 2,
+        "product_name": "recusandae",
+        "product_price": 5,
+        "created_at": "2020-09-26T14:31:11.000000Z",
+        "updated_at": "2020-09-26T14:31:11.000000Z"
+    },
+    {
+        "id": 3,
+        "product_name": "sit",
+        "product_price": 8,
+        "created_at": "2020-09-26T14:31:11.000000Z",
+        "updated_at": "2020-09-26T14:31:11.000000Z"
+    },
+    
+    ]
+
+### Create new wishlist
+
+    Method:POST
+    Endpoint: /api/wishlist
+
+    Mandatory Fields:
+    wishlist_name
+    items [ comma separated product ids e.g = 1,2,3]
+    
+
+    Response 
+
+      {
+        "message": "item added successfully"
+      }
+
+
+### List all wishlist of user
+
+    Method:GET
+    Endpoint: /api/wishlist
+
+    Response:
+      {
+    "id": 2,
+    "name": "your name",
+    "email": "your email",
+    "email_verified_at": null,
+    "created_at": "2020-09-26T14:33:21.000000Z",
+    "updated_at": "2020-09-26T14:33:21.000000Z",
+    "wishlist": [
+        {
+            "id": 1,
+            "wishlist_name": "example wishlist name",
+            "user_id": 2,
+            "items": [
+                {
+                    "id": 31,
+                    "product_name": "optio",
+                    "product_price": 3,
+                    "created_at": "2020-09-26T14:31:11.000000Z",
+                    "updated_at": "2020-09-26T14:31:11.000000Z"
+                },
+                {
+                    "id": 45,
+                    "product_name": "esse",
+                    "product_price": 7,
+                    "created_at": "2020-09-26T14:31:11.000000Z",
+                    "updated_at": "2020-09-26T14:31:11.000000Z"
+                },
+                {
+                    "id": 65,
+                    "product_name": "quia",
+                    "product_price": 3,
+                    "created_at": "2020-09-26T14:40:41.000000Z",
+                    "updated_at": "2020-09-26T14:40:41.000000Z"
+                }
+            ],
+            "created_at": "2020-09-26T14:35:37.000000Z",
+            "updated_at": "2020-09-26T14:35:37.000000Z"
+        }
+    ]
+    }
