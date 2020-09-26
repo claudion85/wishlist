@@ -17,6 +17,11 @@ class WishListTest extends TestCase
      * @return void
      */
 
+    
+     /* Test for create a new wishlist*/
+     /* the route is protected by authentication */
+     /* the test create a new fake user with passport authentication*/
+     
     public function testCreateWishlist(){
         Passport::actingAs(
             factory(User::class)->create(),
@@ -36,6 +41,10 @@ class WishListTest extends TestCase
             ]);
     } 
    
+
+     /* Test for generate error with empty fields*/
+     /* the route is protected by authentication */
+     /* the test create a new fake user with passport authentication*/
     public function testEmptyWishListFields(){
         
         Passport::actingAs(
@@ -61,7 +70,9 @@ class WishListTest extends TestCase
             ]);
     }
 
-    /*THIS FUNCTION EXTRACTS A LIST OF ID FROM EXISTENT PRODUCTS AND RETURN A RANDOM COMMA SEPARATED LIST OF ID OF PRODUCTS (MIN 5, MAX 10)*/ 
+    /*THIS FUNCTION EXTRACTS A LIST OF ID FROM EXISTENT
+     PRODUCTS AND RETURN A RANDOM COMMA SEPARATED 
+     LIST OF ID OF PRODUCTS (MIN 5, MAX 10)*/ 
     private function getListOfItemsfromProduct()
     {
         $product=Product::pluck('id')->toArray();

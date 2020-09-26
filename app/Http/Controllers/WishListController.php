@@ -21,7 +21,8 @@ class WishListController extends Controller
     {
         //return wishlists of logged user
         $user=User::where('id',auth()->user()->id)->with('wishlist')->first();
-       
+        
+        /*FOR EACH ITEM FIELD (comma separated product ids) gets the product object and replaces it */
         foreach($user->wishlist as $items ){
            $product=Product::whereIn('id',json_decode($items->items))->get();
            $items->items=$product;
@@ -111,6 +112,9 @@ class WishListController extends Controller
 
 
     public function exportCsv(){
+
+        /*return a csv from WishListExport collection and store it in local disk */
+
         \Config::set("excel.exports.csv.delimiter",';');
         
         return Excel::store(new WishListExport,'wishlist2_'.date('Y-m-d H-i-s').'.csv');

@@ -38,6 +38,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /* REFERENCE WITH WISHLIST MODEL */
     public function wishlist(){
         return $this->hasMany('App\WishList','user_id','id');
     }

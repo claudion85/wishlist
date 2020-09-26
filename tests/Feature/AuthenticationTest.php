@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
             ]);
     }
     
-    /*TEST FOR SUCCESSFULL REGISTRATION */
+    /* test for successfull registration  */
     public function testSuccessfullyRegistration(){
         $userData = [
             "name" => "John Doe",
@@ -115,7 +115,7 @@ class AuthenticationTest extends TestCase
         
     }
 
-    /*TEST FOR REQUIRED FIELDS ON LOGIN */
+    /* test for required fields on login */
 
     public function testRequiredFieldsOnLogin(){
         $userData = [

@@ -196,3 +196,10 @@ Set the Authentication with:
     php artisan command:export_csv 
 
   the csv file is in storage/app/ folder
+
+
+
+## PhpUnit tests
+run
+
+    vendor/bin/phpunit
