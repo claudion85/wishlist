@@ -190,3 +190,9 @@ Set the Authentication with:
         }
     ]
     }
+
+## Export all wishlist in csv file 
+
+    php artisan command:export_csv 
+
+  the csv file is in storage/app/ folder
