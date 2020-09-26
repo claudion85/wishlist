@@ -22,7 +22,7 @@ class WishListController extends Controller
         //return wishlists of logged user
         $user=User::where('id',auth()->user()->id)->with('wishlist')->first();
         
-        /*FOR EACH ITEM FIELD (comma separated product ids) gets the product object and replaces it */
+        /*for each item field (comma separated product ids) gets the product object and replaces it */
         foreach($user->wishlist as $items ){
            $product=Product::whereIn('id',json_decode($items->items))->get();
            $items->items=$product;
